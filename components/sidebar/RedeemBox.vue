@@ -9,7 +9,8 @@
       </p>
     </div>
     <div class="button-box flex items-center justify-center">
-      Redeem now
+      <span class="on-hover">Redeem now</span>
+      <span class="not-hover">500 pts</span>
     </div>
   </div>
 </template>
@@ -56,5 +57,12 @@ export default {
   color: white;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.button-box .on-hover, .button-box:hover .not-hover {
+  display: none;
+}
+.button-box:hover .on-hover {
+  display: block
 }
 </style>

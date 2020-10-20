@@ -100,6 +100,7 @@ export default {
 
 .redeem {
   height: 150px;
+  margin-bottom: 60px;
 }
 
 .social-inner {
@@ -113,7 +114,7 @@ export default {
 }
 
 .bot-bar {
-  padding: 12px;
+  padding: 18px;
   font-size: 12px;
 }
 
