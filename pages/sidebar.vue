@@ -6,8 +6,10 @@
       <p class="activity-link">View all my activities ></p>
       <div class="missions">
         <SideBarHeader title="Missions" subtitle="Let's do this for more points!" type="mission" />
-        <MissionTodo points="10" label="1 min Survey" sublabel="Take a short and simple survey" />
-        <MissionTodo points="100" label="Capture & Share" sublabel="Capture 30 secs video of our product and share in instagram" />
+        <transition-group name="fade">
+          <MissionTodo v-if="mission.includes('1')" :key="1" points="10" label="1 min Survey" sublabel="Take a short and simple survey" />
+          <MissionTodo v-if="mission.includes('2')" :key="2" points="100" label="Capture & Share" sublabel="Capture 30 secs video of our product and share in instagram" />
+        </transition-group>
       </div>
       <div class="redeem">
         <SideBarHeader title="Redeem" subtitle="Get your favorite rewards" type="redeem" />
@@ -42,10 +44,20 @@ import FanBird from '@/assets/images/Fanbird.png'
 export default {
   name: 'sidebar',
   components: { TopBar, CurrentPoint, SideBarHeader, MissionTodo, RedeemBox },
+  mounted() {
+    let _this = this
+    setTimeout(function() {
+      _this.mission.push('1')
+    }, 250)
+    setTimeout(function() {
+      _this.mission.push('2')
+    }, 500)
+  },
   data() {
     return {
       images: SocialImages,
-      fanbird: FanBird
+      fanbird: FanBird,
+      mission: []
     }
   }
 }
@@ -53,7 +65,7 @@ export default {
 
 <style scoped>
 .meundies-sidebar {
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -68,6 +80,10 @@ export default {
 .missions, .redeem, .social-inner {
   padding: 0 45px;
   margin-bottom: 45px;
+}
+
+.missions {
+  height: 250px;
 }
 
 .social-inner {
@@ -86,5 +102,17 @@ export default {
 
 .fanbird {
   width: 92px;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-enter-to {
+  transform: translateY(0);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all 500ms linear;
 }
 </style>

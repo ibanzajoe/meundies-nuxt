@@ -1,5 +1,5 @@
 <template>
-  <div class="mission-todo">
+  <div class="mission-todo cursor-pointer">
     <div class="absolute-box">
       {{points}}<span class="pts">pts</span>
     </div>
@@ -42,6 +42,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: all 200ms ease-in-out;
+}
+.mission-todo:hover {
+  background-color: var(--color-hover-green);
 }
 
 .absolute-box {
