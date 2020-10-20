@@ -57,12 +57,27 @@ export default {
   color: white;
   text-decoration: underline;
   cursor: pointer;
+  position: relative;
+}
+
+.button-box .on-hover {
+  text-decoration: underline;
+}
+
+.button-box .on-hover, .button-box .not-hover {
+  transition: all 200ms ease-in-out;
 }
 
 .button-box .on-hover, .button-box:hover .not-hover {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
 }
-.button-box:hover .on-hover {
-  display: block
+.button-box:hover .on-hover, .button-box .not-hover {
+  opacity: 1;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
