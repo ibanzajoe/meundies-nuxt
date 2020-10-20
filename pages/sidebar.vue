@@ -13,13 +13,19 @@
       </div>
       <div class="redeem">
         <SideBarHeader title="Redeem" subtitle="Get your favorite rewards" type="redeem" />
-        <RedeemBox label="10% off entire order" sublabel="expires in 31 days" />
+        <transition-group name="fade">
+          <RedeemBox v-if="mission.includes('3')" :key="3" label="10% off entire order" sublabel="expires in 31 days" />
+        </transition-group>
+        
       </div>
 
       <div class="social">
         <div class="social-inner">
           <SideBarHeader title="MeUndies" subtitle="See what everyone's sharing" type="social" />
-          <img :src="images" />
+          <transition-group name="fade">
+            <img v-if="mission.includes('4')" :key="4" :src="images" />
+          </transition-group>
+          
         </div>
       </div>
     </div>
@@ -52,6 +58,12 @@ export default {
     setTimeout(function() {
       _this.mission.push('2')
     }, 500)
+    setTimeout(function() {
+      _this.mission.push('3')
+    }, 1000)
+    setTimeout(function() {
+      _this.mission.push('4')
+    }, 1500)
   },
   data() {
     return {
@@ -86,8 +98,13 @@ export default {
   height: 250px;
 }
 
+.redeem {
+  height: 150px;
+}
+
 .social-inner {
   margin-bottom: 0;
+  height: 220px;
 }
 
 .social {
